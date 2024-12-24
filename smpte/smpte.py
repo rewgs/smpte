@@ -15,9 +15,9 @@ class Timecode:
         self.hours: int = int(self.__split[0])
         self.minutes: int = int(self.__split[1])
         self.seconds: int = int(self.__split[2])
-        self.__framerate: dict = self.__validate_framerate(fr: Framerate)
-        # self.framerate: int = self.__framerate["framerate"]
-        # self.frames: int = self.__framerate["frames"]
+        self.__fr: dict[str,int] = self.__validate_framerate(fr, int(self.__split[3]))
+        # self.framerate: int = self.__fr["framerate"]
+        # self.frames: int = self.__fr["frames"]
 
     @staticmethod
     def __split_timecode(tc: str) -> list[str]:
@@ -29,14 +29,16 @@ class Timecode:
         else:
             return split
 
-    def __validate_framerate(self, fr: Framerate) -> dict:
+    @staticmethod
+    def __validate_framerate(fr: Framerate, frames: int) -> dict[str,int]:
         """
         Returns a framerate (int) and number of frames (int).
         """
 
         return {
-            # "framerate": int = 
-            # "frames": int = 
+            # NOTE: Temp values
+            "framerate": 1,
+            "frames": 1,
         }
 
 
@@ -49,5 +51,6 @@ class TimecodeCalculator:
 
     def calculate(self):
         ...
+
 
 
